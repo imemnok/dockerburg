@@ -9,24 +9,27 @@ services:
     container_name: myapp-node-server
     command: npm start
     volumes:
-      - data-volume:/usr/app
+      - ./server/:/usr/src/app
     ports:
       - "5000:5000"
+    env_file: ./server/.env
+    environment:
+      - NODE_ENV=development
     networks:
       - app-network
   client:
     build:
       context: ./client
-      dockerfile: Dockerfile-Prod
+      dockerfile: Dockerfile-Dev
     image: imemreg.azurecr.io/myapp-client
     container_name: myapp-react-client
     command: npm start
     volumes:
-      - web-root:/usr/app
+      - ./client/:/usr/app
     depends_on:
       - server
     ports:
-      - "80:80"
+      - "3000:3000"
     networks:
       - app-network
 
@@ -36,17 +39,6 @@ networks:
 
 volumes:
     data-volume:
-      driver: azure_file
-      driver_opts:
-        share_name: datashare
-        storage_account_name: mernteststor
-    node-modules:
-      driver: azure_file
-      driver_opts:
-        share_name: moduleshare
-        storage_account_name: mernteststor
+    node_modules:
     web-root:
-      driver: azure_file
-      driver_opts:
-        share_name: webshare
-        storage_account_name: mernteststor
+      driver: local

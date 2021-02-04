@@ -64,7 +64,7 @@ export default function Add(props) {
       options: options.length > 1 ? options: {},
     };
     console.log(menuItem);
-    fetch("http://localhost:5000/menu/add", {
+    fetch("/menu/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

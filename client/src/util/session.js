@@ -1,7 +1,7 @@
-const baseUri = "http://localhost:5000/"
+const baseUri = ""
 
 export const login = user => (
-    fetch(`${baseUri}session`, {
+    fetch(`${baseUri}/session`, {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
@@ -12,7 +12,7 @@ export const login = user => (
   );
   
   export const signup = user => (
-    fetch(`${baseUri}users`, {
+    fetch(`${baseUri}/users`, {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
@@ -22,13 +22,13 @@ export const login = user => (
   );
   
   export const logout = () => (
-    fetch(`${baseUri}session`, { method: "DELETE" })
+    fetch(`${baseUri}/session`, { method: "DELETE" })
   );
   
   export const checkLoggedIn = async () => {
-    const response = await fetch(`${baseUri}session`);
+    const response = await fetch(`${baseUri}/session`);
     const { user } = await response.json();
-    const menu = await fetch(`${baseUri}menu/menuItems`);
+    const menu = await fetch(`${baseUri}/menu/menuItems`);
     const  menuItems  = await menu.json()
     let preloadedState = {};
     // if (user) {

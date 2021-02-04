@@ -6,7 +6,8 @@ import "../css/home.css";
 import Banner from "./banner.component";
 import { updateCart,updateCartitems } from "../actions/cart";
 
-const imgSrc = "http://localhost:5000/images/";
+const imgSrc = "/images/burgers/"
+
 
 const mapStateToProps = ({
   session: { userId, userName, userRole },

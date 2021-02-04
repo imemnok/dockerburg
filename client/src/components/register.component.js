@@ -25,7 +25,7 @@ function Register(props) {
             "role": role
         }
         console.log(user)
-        fetch("http://localhost:5000/users/register", {
+        fetch("/users/register", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

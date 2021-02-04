@@ -1,16 +1,16 @@
-const baseUri = "http://localhost:5000/"
+const baseUri = ""
 export const getCarts = () =>
-  fetch(`${baseUri}cart/`, {
+  fetch(`${baseUri}/cart/`, {
     method: "GET",
   });
 
 export const getCart = (cart) =>
-  fetch(`${baseUri}cart/${cart}`, {
+  fetch(`${baseUri}/cart/${cart}`, {
     method: "GET",
   });
 
 export const createCart = (cart) =>
-  fetch(`${baseUri}cart/add`, {
+  fetch(`${baseUri}/cart/add`, {
     method: "POST",
     body: JSON.stringify(cart),
     headers: {
@@ -19,7 +19,7 @@ export const createCart = (cart) =>
   });
 
 export const updateCart = (cart) =>
-  fetch(`${baseUri}cart/update`, {
+  fetch(`${baseUri}/cart/update`, {
     method: "POST",
     body: JSON.stringify(cart),
     headers: {
